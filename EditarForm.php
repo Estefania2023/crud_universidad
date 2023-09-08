@@ -15,65 +15,70 @@
         <?php
          include 'Conexion.php';
 
-            $sql = "SELECT * FROM productos WHERE IdProducto =".$_GET['Id'];
+            $sql = "SELECT * FROM estudiantes WHERE Idestudiante =".$_GET['Id'];
             $resultado = $conn->query($sql);
 
             $row = $resultado->fetch_assoc();
         ?>
 
-        <input type="Hidden" class="form-control" name="Id" value="<?php echo $row['IdProducto']; ?>">
+        <input type="Hidden" class="form-control" name="id" value="<?php echo $row['Idestudiante']; ?>">
 
         <!--TRAER DATOS CATEGORIAS-->
-        <label>Categorias</label>
-        <select class="form-select mb-3" aria-label="Default select example" name="Categorias">
+        <label>PROGRAMAS</label>
+        <select class="form-select mb-3" aria-label="Default select example" name="programa">
             <option selected disabled>--Seleccione Categorias--</option>
             <?php
                include 'Conexion.php';
 
-                $sql1 = "SELECT * FROM categorias WHERE Id=".$row['CategoriaId'];
+                $sql1 = "SELECT * FROM programa WHERE Idprograma=".$row['programaId'];
                 $resultado1 = $conn->query($sql1);
 
                 $row1 = $resultado1->fetch_assoc();
 
-                echo "<option selected value='".$row1['Id']."'>".$row1['NombreCategoria']."</option>";
+                echo "<option selected value='".$row1['Idprograma']."'>".$row1['nombreprograma']."</option>";
 
-                $sql2 = "SELECT * FROM categorias";
+                $sql2 = "SELECT * FROM programa";
                 $resultado2 = $conn->query($sql2);
 
                 while ($Fila = $resultado2->fetch_array()) {
-                    echo "<option value='".$Fila['Id']."'>".$Fila['NombreCategoria']."</option>";
+                    echo "<option value='".$Fila['Idprograma']."'>".$Fila['nombreprograma']."</option>";
                 }
             ?>   
         </select>
-        <label>Marcas</label>
-        <select class="form-select mb-3" aria-label="Default select example" name="Marcas">
+        <label>DOCENTES</label>
+        <select class="form-select mb-3" aria-label="Default select example" name="docente">
             <option selected disabled>--Seleccione marcas--</option>
             <?php
                include 'Conexion.php';
 
-                $sql3 = "SELECT * FROM marcas WHERE Id=".$row['MarcaId'];
+                $sql3 = "SELECT * FROM docente WHERE Iddocente=".$row['docenteId'];
                 $resultado3 = $conn->query($sql3);
 
                 $row3 = $resultado3->fetch_assoc();
 
-                echo "<option selected value='".$row3['Id']."'>".$row3['NombreMarca']."</option>";
+                echo "<option selected value='".$row3['Iddocente']."'>".$row3['nombre']."</option>";
 
-                $sql4 = "SELECT * FROM Marcas";
+                $sql4 = "SELECT * FROM docente";
                 $resultado4 = $conn->query($sql4);
 
                 while ($Fila = $resultado4->fetch_array()) {
-                    echo "<option value='".$Fila['Id']."'>".$Fila['NombreMarca']."</option>";
+                    echo "<option value='".$Fila['Iddocente']."'>".$Fila['nombre']."</option>";
                 }
             ?>   
         </select>
 
         <div class="mb-3">
-            <label class="form-label">Precio</label>
-            <input type="text" class="form-control" name="Precio" value="<?php echo $row['Precio']; ?>">
+            <label class="form-label">nombre y apellido</label>
+            <input type="text" class="form-control" name="nombreapellido" value="<?php echo $row['nombreapellido']; ?>">
         </div>
         <div class="mb-3">
-            <label class="form-label">Descripcion</label>
-            <input type="text" class="form-control" name="Descripcion" value="<?php echo $row['DescripcionProducto']; ?>">
+            <label class="form-label">email</label>
+            <input type="text" class="form-control" name="email" value="<?php echo $row['emailE']; ?>">
+            <div class="mb-3">
+            <label class="form-label">edad</label>
+            <input type="text" class="form-control" name="edad" value="<?php echo $row['edad']; ?>">
+        </div>
+
         </div>
 
         <div class="text-center">

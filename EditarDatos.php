@@ -2,19 +2,22 @@
 
 include 'Conexion.php';
 
-    $id = $_POST['Id'];
-    $Categoria = $_POST['Categorias'];
-    $Marcas = $_POST['Marcas'];
-    $Precio = $_POST['Precio'];
-    $Descripcion = $_POST['Descripcion'];
-    $Nombre = $_POST['Nombre'];
+    $id = $_POST['id'];
+    $Categoria = $_POST['programa'];
+    $Marcas = $_POST['docente'];
+    $Nombre = $_POST['nombreapellido'];
+    $Precio = $_POST['email'];
+    $Descripcion = $_POST['edad'];
+   
+    
 
-    $sql = "UPDATE productos SET 
-                    CategoriaId='".$Categoria."',
-                    MarcaId='".$Marcas."',
-                    Precio='".$Precio."',
-                    DescripcionProducto='".$Descripcion."',
-                    Nombre='".$Nombre."' WHERE IdProducto =".$id."";
+    $sql = "UPDATE estudiantes SET 
+                    programaId='".$Categoria."',
+                    docenteId='".$Marcas."',
+                    nombreapellido='".$Nombre."',
+                    emailE='".$Precio."',
+                    edad='".$Descripcion."'
+                     WHERE Idestudiante =".$id."";
 
     if ($resultado = $conn->query($sql)) {
         header("location:Index.php");

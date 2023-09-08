@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Agregar Producto</title>
+    <title>Agregar Alumno</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
@@ -13,42 +13,41 @@
         <form action="insertarDatos.php" method="POST">
 
         <div class="mb-3">
-            <label class="form-label">Nombre </label>
-            <input type="text" class="form-control" name="Nombre" >
-            <label class="form-label"> Apellido</label>
-            <input type="text" class="form-control" name="Apellido">
+            <label class="form-label">nombre y apellido </label>
+            <input type="text" class="form-control" name="nombreapellido" >
+        
         </div>
         <div class="mb-3">
             <label class="form-label">Edad</label>
-            <input type="text" class="form-control" name="Edad">
+            <input type="text" class="form-control" name="edad">
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="text" class="form-control" name="Email">
+            <input type="text" class="form-control" name="email">
         </div>
 
 
         <label for="">Docente</label>
-        <select class="form-select mb-3" name="Docente">
+        <select class="form-select mb-3" name="docente">
             <option selected disabled>--Seleccionar Docente--</option>
             <?php
                 include 'Conexion.php';
 
                 $sql = $conn->query("SELECT * FROM docente");
                 while ($resultado = $sql->fetch_assoc()) {
-                    echo "<option value='".$resultado['Id_docente']."'>".$resultado['Nombre_D']."</option>";
+                    echo "<option value='".$resultado['Iddocente']."'>".$resultado['nombre']."</option>";
                 }
             ?>
         </select>
         <label for="">Asignaturas</label>
-        <select class="form-select mb-3" name="Asignatura">
+        <select class="form-select mb-3" name="programa">
             <option selected disabled>--Seleccionar asignatura--</option>
             <?php
           include 'Conexion.php';
 
-                $sql = $conn->query("SELECT * FROM asignatura");
+                $sql = $conn->query("SELECT * FROM programa");
                 while ($resultado = $sql->fetch_assoc()) {
-                    echo "<option value='".$resultado['Id_asignatura']."'>".$resultado['Nombre_A']."</option>";
+                    echo "<option value='".$resultado['Idprograma']."'>".$resultado['nombreprograma']."</option>";
                 }
             ?>
         </select>

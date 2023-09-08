@@ -1,15 +1,14 @@
 <?php
+  include 'Conexion.php';
 
-include 'Conexion.php';
-$Nombre = $_POST['Nombre'];
-$Apellido = $_POST['Apellido'];
-$Docente = $_POST['Docente'];
-$Asignatura = $_POST['Asignatura'];
-$Edad = $_POST['Edad'];
-$Email = $_POST['Email'];
+$nom = $_POST['nombreapellido'];
+$marca = $_POST['edad'];
+$precio = $_POST['email'];
+$descripcion = $_POST['docente'];
+$email = $_POST['programa'];
 
-
-$sql = "INSERT INTO estudiante (Nombre,Apellido,Docente,Asignatura,Edad,Email) VALUES( '$Nombre', '$Apellido',$Docente','$Asignatura','$Edad','$Email')";
+$sql = "INSERT INTO estudiantes(nombreapellido, edad,emailE,programaId,docenteId) 
+VALUES('$nom','$marca','$precio','$descripcion','$email')";
 
 
 $resultado = mysqli_query($conn, $sql);
